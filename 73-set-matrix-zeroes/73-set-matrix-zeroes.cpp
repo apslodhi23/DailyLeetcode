@@ -16,12 +16,12 @@ public:
             }
             
         }
-        for(auto x:arr){
-            for(auto y:x){
-                cout<<y<<" ";
-            }
-            cout<<endl;
-        }
+        // for(auto x:arr){
+        //     for(auto y:x){
+        //         cout<<y<<" ";
+        //     }
+        //     cout<<endl;
+        // }
         for(int i=n-1;i>=0;i--){
             for(int j=m-1;j>=1;j--){
                 if(arr[i][0]==0 or arr[0][j]==0){
