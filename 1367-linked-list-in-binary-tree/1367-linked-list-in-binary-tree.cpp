@@ -29,8 +29,6 @@ public:
             return false;
         }
         return head->val==root->val and (fun(head->next,root->left) or fun(head->next,root->right));
-        
-
     }
     bool isSubPath(ListNode* head, TreeNode* root) {
         if(root==NULL){
