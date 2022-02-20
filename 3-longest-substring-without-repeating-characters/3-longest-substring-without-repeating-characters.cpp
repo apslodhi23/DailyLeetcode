@@ -4,7 +4,7 @@ public:
         int n=s.length();
         int mx=0;
         int x=-1;
-        map<int,int>m;
+        unordered_map<int,int>m;
         for(int i=0;i<n;i++){
             if(m.find(s[i])!=m.end()){
                 x=max(x,m[s[i]]);
