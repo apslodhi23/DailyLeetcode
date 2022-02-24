@@ -10,21 +10,45 @@
  */
 class Solution {
 public:
+    ListNode*fun(ListNode*heada,ListNode*headb){
+        ListNode*d=new ListNode(0);
+        ListNode*temp=d;
+        while(heada and headb){
+            if(heada->val<=headb->val){
+                temp->next=heada;
+                temp=temp->next;
+                heada=heada->next;
+            }else{
+                temp->next=headb;
+                temp=temp->next;
+                headb=headb->next;
+            }
+        }
+        while(heada){
+            temp->next=heada;
+                temp=temp->next;
+                heada=heada->next;
+        }
+        while(headb){
+            temp->next=headb;
+                temp=temp->next;
+                headb=headb->next;
+        }
+        temp->next=NULL;
+        return d->next;
+    }
     ListNode* sortList(ListNode* head) {
-        vector<int>v;
-        auto x=head;
-        while(x!=NULL){
-            v.push_back(x->val);
-            x=x->next;
+        if(!head or !head->next){
+            return head;
         }
-        sort(v.begin(),v.end());
-        x=head;
-        int i=0;
-        while(x!=NULL){
-            x->val=v[i];
-            i++;
-            x=x->next;
+        auto s=head,f=head->next;
+        while(f and f->next){
+            s=s->next;
+            f=f->next->next;
         }
-        return head;
+        auto x=s->next;
+        s->next=NULL;
+        return fun(sortList(x),sortList(head));
+        
     }
 };
