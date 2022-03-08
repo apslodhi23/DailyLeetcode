@@ -11,7 +11,7 @@ public:
     bool hasCycle(ListNode *head) {
         ListNode*s=head,*f=head;
         do{
-            if(f==NULL or f->next==NULL  or f->next->next==NULL){
+            if(f==NULL or f->next==NULL){
                 return false;
             }
             s=s->next;
