@@ -32,9 +32,7 @@ class Solution {
                 }
             }
         }
-        if( ans==V)
-        return false;
-        return true;
+        return ans!=V;
     }
 };
 
