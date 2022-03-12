@@ -9,6 +9,7 @@ public:
         }
         return false;
     }
+    
     vector<int> sortJumbled(vector<int>& mapping, vector<int>& nums) {
         vector<pair<int,pair<int,int>>>v;
         int n=nums.size();
