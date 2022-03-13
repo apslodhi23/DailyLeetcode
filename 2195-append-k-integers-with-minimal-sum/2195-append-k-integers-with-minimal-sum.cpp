@@ -1,10 +1,11 @@
 class Solution {
 public:
     long long minimalKSum(vector<int>& nums, int k) {
-        long long res = (long long)k * (k + 1) / 2;
-        for (int n : set<int>(begin(nums), end(nums)))
-            if (n <= k)
-                res += (++k) - n;
-        return res;
+        long long sum=(long long )k*(k+1)/2;
+        for(auto x:set<long long>(nums.begin(),nums.end())){
+            if(x<=k)
+            sum+=(++k)-x;
+        }
+        return sum;
     }
 };
