@@ -2,8 +2,6 @@ class Solution {
 public:
     int climbStairs(int n) {
         int ans=0;
-        // int dp[n+1];
-        // dp[0]=0;
         int x=1;
         if(n<2){
             return 1;
