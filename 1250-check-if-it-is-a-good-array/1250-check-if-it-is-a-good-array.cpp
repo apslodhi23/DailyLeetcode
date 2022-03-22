@@ -1,0 +1,13 @@
+class Solution {
+public:
+    bool isGoodArray(vector<int>& nums) {
+        if(nums.size()==1 and nums[0]!=1){
+            return false;
+        }
+        int g=nums[0];
+        for(int i=1;i<nums.size();i++){
+            g=__gcd(g,nums[i]);
+        }
+        return g==1;
+    }
+};
