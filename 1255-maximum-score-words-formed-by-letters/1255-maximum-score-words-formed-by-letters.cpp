@@ -3,7 +3,6 @@ public:
     int ans=0;
     void fun(vector<string>&wrd,map<char,int>m,vector<int>sr,int i,int sum){
         if(i>=wrd.size()){
-            // cout<<sum<<endl;
             ans=max(ans,sum);
             return;
         }
@@ -22,7 +21,6 @@ public:
                 }
             }
         }
-        // cout<<ss<<endl;
         if(f1==true){
             fun(wrd,m,sr,i+1,sum);
         }else{
