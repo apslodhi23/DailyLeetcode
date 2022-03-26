@@ -18,21 +18,21 @@ public:
         }
         int l=fun(root->left);
         int r=fun(root->right);
-        if(l==0 or r==0){
-            ans++;
-            return 1;
-        }
-        else if( l==1 or r==1){
+         if(l==0 or r==0){
+             ans++;
+             return 1;
+         }
+        else if(l==1 or r==1){
             return 2;
-        }else
+        }
         return 0;
     }
     int minCameraCover(TreeNode* root) {
         if(root==NULL){
             return 0;
         }
-        int as=fun(root);
-        if(as==0){
+        int c=fun(root);
+        if(c==0){
             return ans+1;
         }
         return ans;
