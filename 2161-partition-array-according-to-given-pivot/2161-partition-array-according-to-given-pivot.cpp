@@ -1,28 +1,29 @@
 class Solution {
 public:
-    vector<int> pivotArray(vector<int>& v, int pivot) {
-        vector<int>v1,v2,v3;
-        for(auto x:v){
-            if(x<pivot){
-                v1.push_back(x);
-            }else if(x==pivot){
-                v2.push_back(x);
-            }else{
-                v3.push_back(x);
+    vector<int> pivotArray(vector<int>& nums, int t) {
+        int l=0,s=0,h=0;
+        for(auto x:nums){
+            if(x<t){
+                l++;
+            }else if(x==t){
+                s++;
             }
         }
-        int i=0;
-        for(auto x:v1){
-            v[i]=x;
-            i++;
-        }
-        for(auto x:v2){
-            v[i]=x;
-            i++;
-        }
-        for(auto x:v3){
-            v[i]=x;
-            i++;
+        h=s+l;
+        s=l;
+        l=0;
+        vector<int>v(nums.size());
+        for(auto x:nums){
+            if(x<t){
+                v[l]=x;
+                l++;
+            }else if(x==t){
+                v[s]=x;
+                s++;
+            }else{
+                v[h]=x;
+                h++;
+            }
         }
         return v;
     }
