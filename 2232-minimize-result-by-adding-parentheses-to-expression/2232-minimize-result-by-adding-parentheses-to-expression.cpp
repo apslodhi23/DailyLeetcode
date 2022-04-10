@@ -11,9 +11,13 @@ public:
         }
         s1=s.substr(0,i-1);
         s2=s.substr(i);
+        
         long long ans=(stoi(s1)+stoi(s2));
         string as="("+s+")";
+        
+        
         for(i=0;i<s1.size();i++){
+            
             string ss="";
             long long c1=1;
             if(i>0){
