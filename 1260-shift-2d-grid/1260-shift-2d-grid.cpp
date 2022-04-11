@@ -1,27 +1,26 @@
 class Solution {
 public:
-    void fun(vector<vector<int>>&arr,int l,int r){
-        int n=arr.size();
-        int m=arr[0].size();
-        while(l<r){
-            int lr=l/m, lc=l%m;
-            int rr=r/m,rc=r%m;
-            swap(arr[lr][lc],arr[rr][rc]);
-            l++;
-                r--;
-        }
-        
-    }
-    vector<vector<int>> shiftGrid(vector<vector<int>>& arr, int k) {
-        int n=arr.size();
-        int m=arr[0].size();
-        k=k%(n*m);
-        if(k==0){
-            return arr;
-        }
-        fun(arr,0,n*m-1);
-        fun(arr,0,k-1);
-        fun(arr,k,n*m-1);
-        return arr;
+    vector<vector<int>> shiftGrid(vector<vector<int>>& grid, int k) {
+         vector<vector<int>>res;
+          int m =grid.size();
+          int n= grid[0].size();
+        res=grid;
+          while(k--)
+          {
+          for(int i=0;i<m;i++)
+          {
+              for(int j=0;j<n;j++)
+              {
+                  if(i==0&&j==0)
+                       res[i][j]=grid[m-1][n-1];
+                    else if(i!=0&&j==0)
+                        res[i][j]=grid[i-1][n-1];
+                   else
+                       res[i][j]=grid[i][j-1];
+              }
+          }
+              grid=res;
+          }
+        return res;
     }
 };
