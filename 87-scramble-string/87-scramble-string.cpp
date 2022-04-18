@@ -1,35 +1,31 @@
 class Solution {
-public:
-    map<pair<string,string>,bool>m;
+public:map<pair<string,string>,bool>mm;
     bool fun(string s1,string s2){
-        if(s1.length()!=s2.length()){
+        int n=s1.length();
+        int m=s2.length();
+        if(n!=m){
             return false;
         }
-       if(s1==s2){
-           return true;
-       }
-        if(s1.length()==1){
-            return s1==s2;
+        if(n==0){
+            return true;
         }
-        if(m.find({s1,s2})!=m.end()){
-            return m[{s1,s2}];
+        if(s1==s2){
+            return true;
         }
-        bool ans=false;
-        int n=s1.length();
-        for(int i=1;i<s1.length();i++){
-            bool b1=fun(s1.substr(0,i) ,s2.substr(0,i)) and fun(s1.substr(i) ,s2.substr(i));
-            if(b1==true){
+         if(mm.find({s1,s2})!=mm.end()){
+            return mm[{s1,s2}];
+        }
+        for(int i=0;i<n-1;i++){
+            if(fun(s1.substr(0,i+1),s2.substr(n-i-1)) && fun(s1.substr(i+1),s2.substr(0,n-i-1))){
                 return true;
             }
-             bool b2=fun(s1.substr(0,i) ,s2.substr(n-i)) and fun(s1.substr(i) ,s2.substr(0,n-i));
-            if(b2==true){
+            if(fun(s1.substr(0,i+1),s2.substr(0,i+1)) && fun(s1.substr(i+1),s2.substr(i+1))){
                 return true;
             }
         }
-        return m[{s1,s2}]=ans;
+        return  mm[{s1,s2}]=false;
     }
     bool isScramble(string s1, string s2) {
-        m.clear();
         return fun(s1,s2);
     }
 };
