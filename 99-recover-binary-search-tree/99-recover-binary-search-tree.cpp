@@ -15,7 +15,7 @@ public:
     TreeNode*c=new TreeNode(INT_MIN);
     void fun(TreeNode*root){
         if(root==NULL){
-            return;
+            return ;
         }
         fun(root->left);
         if(a==NULL and c->val>root->val){
