@@ -3,7 +3,7 @@ public:
     vector<string>ans;
     string s ;
     int tar;
-    void fun(int i,const string &str,long rs,long ps){
+    void fun(int i,string str,long rs,long ps){
         if(i==s.length()){
             if(rs==tar){
                 ans.push_back(str);
