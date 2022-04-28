@@ -3,16 +3,18 @@ public:
     vector<int> minOperations(string arr) {
         int n=arr.size();
         vector<int>ans(n);
-        for(int i=0;i<n;i++){
-            int k=0;
-            for(int j=0;j<n;j++){
-                if(i!=j){
-                    if(arr[j]=='1'){
-                        k+=(abs(i-j));
-                    }
-                }
-            }
-            ans[i]=k;
+        int s=arr[0]-'0',k=0;
+        for(int i=1;i<n;i++){
+            ans[i]+=s+k;
+            k=ans[i];
+            s+=(arr[i]-'0');
+            
+        }
+        s=arr[n-1]-'0',k=0;
+        for(int i=n-2;i>=0;i--){
+            ans[i]+=s+k;
+            k=s+k;
+            s+=(arr[i]-'0');
         }
         return ans;
     }
