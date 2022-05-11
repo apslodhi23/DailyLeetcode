@@ -1,9 +1,6 @@
 class Solution {
 public:
-    
-    int ans=0;
-    
-    void fun(int n,char c){
+    void fun(int n,char c,int &ans){
         if(n==0){
             ans++;
             return;
@@ -11,12 +8,13 @@ public:
         string s="aeiou";
         for(auto x:s){
             if(c<=x){
-                fun(n-1,x);
+                fun(n-1,x,ans);
             }
         }
     }
     int countVowelStrings(int n) {
-        fun(n,' ');
+        int ans=0;
+        fun(n,' ',ans);
         return ans;
     }
 };
