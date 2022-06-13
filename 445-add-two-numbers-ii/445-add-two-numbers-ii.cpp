@@ -1,40 +1,49 @@
-//brute force soltuion
+//optimsed soltuion
 // time:- O(n);
 // space :- o(1);
 
 class Solution {
 public:
-    ListNode*rev(ListNode*h){
-        ListNode*curr=h,*nex=h,*prev=NULL;
-        while(nex!=NULL){
-            nex=curr->next;
-            curr->next=prev;
-            prev=curr;
-            curr=nex;
+    ListNode* fun(ListNode*l1,ListNode*l2,int &c){
+        // cout<<1<<endl;
+        if(l1==NULL and l2==NULL){
+            return NULL;
         }
-        return prev;
+        ListNode* newnode= new ListNode(-1);
+        newnode->next=fun(l1->next,l2->next,c);
+        newnode->val=(l1->val+l2->val+c)%10;
+        c=(l1->val+l2->val+c)/10;
+        return newnode;
+            
     }
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        l1=rev(l1);
-        l2=rev(l2);
-        int c=0;
-        ListNode*dum=new ListNode(0);
-        ListNode*temp=dum;
-        // while(l1!=NULL){
-        //     cout<<l1->val<<" ";
-        //     l1=l1->next;
-        // }
-        while(l1!=NULL or l2!=NULL or c!=0){
-            int k1=l1?l1->val:0;
-            int k2=l2?l2->val:0;
-            int val=k1+k2+c;
-            temp->next=new ListNode(val%10);
-            cout<<temp->val;
-            c=val/10;
-            l1=l1?l1->next:NULL;
-            l2=l2?l2->next:NULL;
-            temp=temp->next;
+        ListNode*l=l1,*ll=l2;
+        while(l!=NULL or ll!=NULL){
+            if(l==NULL){
+                ListNode*t=new ListNode(0);
+                t->next=l1;
+                l1=t;
+                ll=ll->next;
+            }else if(ll==NULL){
+                ListNode* t= new ListNode(0);
+                t->next=l2;
+                l2=t;
+                l=l->next;
+            }else{
+                l=l->next;
+                ll=ll->next;
+            }
+            // cout<<1<<endl;
         }
-        return rev(dum->next);
+        ListNode* dum= new ListNode(0);
+        int c=0;
+        dum->next=fun(l1,l2,c);
+        if(c!=0){
+            ListNode* t=new ListNode(c);
+            t->next=dum->next;
+            dum->next=t;
+        }
+        return dum->next;
+        
     }
 };
